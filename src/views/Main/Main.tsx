@@ -1,10 +1,11 @@
-import { CityCard } from '../../components/CityCard/CityCard';
+import { OffersList } from '../../components/OffersList/OffersList';
+import type { Offer } from '../../types/offer';
 
 interface MainProps {
-  cardsCount: number;
+  offers: Offer[];
 }
 
-export const Main = ({ cardsCount }: MainProps) => (
+export const Main = ({ offers }: MainProps) => (
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -77,7 +78,7 @@ export const Main = ({ cardsCount }: MainProps) => (
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{cardsCount} places to stay in Amsterdam</b>
+            <b className="places__found">{offers.length} places to stay in Amsterdam</b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex={0}>
@@ -93,13 +94,10 @@ export const Main = ({ cardsCount }: MainProps) => (
                 <li className="places__option" tabIndex={0}>Top rated first</li>
               </ul>
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              <CityCard />
-              <CityCard />
-              <CityCard />
-              <CityCard />
-              <CityCard />
-            </div>
+            <OffersList
+              offers={offers}
+              // activeOffer={null}
+            />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map"></section>
