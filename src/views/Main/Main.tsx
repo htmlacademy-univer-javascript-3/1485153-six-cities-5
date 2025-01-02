@@ -94,7 +94,10 @@ export const Main = ({ offers }: MainProps) => (
                 <li className="places__option" tabIndex={0}>Top rated first</li>
               </ul>
             </form>
-            <OffersList offers={offers} activeOffer={null} />
+            <OffersList
+              offers={offers}
+              // activeOffer={null}
+            />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map"></section>

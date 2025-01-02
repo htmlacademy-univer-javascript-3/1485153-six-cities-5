@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export const ReviewForm = () => {
-  const [rating, setRating] = useState(0);
+  const [, setRating] = useState(0);
   const [review, setReview] = useState('');
 
   return (

@@ -3,12 +3,12 @@ import { OfferCard } from '../OfferCard/OfferCard';
 
 interface OffersListProps {
   offers: Offer[];
-  activeOffer: Offer | null;
+  // activeOffer?: Offer;
 }
 
 export const OffersList = ({
   offers,
-  activeOffer,
+  // activeOffer,
 }: OffersListProps) => (
   <div className="cities__places-list places__list tabs__content">
     {offers.map((offer) => (
