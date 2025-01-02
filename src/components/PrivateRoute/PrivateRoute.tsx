@@ -7,7 +7,7 @@ interface PrivateRouteProps {
 }
 
 export const PrivateRoute = ({ children }: PrivateRouteProps) => {
-  const hasAccess = false;
+  const hasAccess = true;
 
   return hasAccess ? children : <Navigate to={getRoute('/login')} />;
 };

@@ -6,17 +6,18 @@ import { Offer } from '../Offer/Offer';
 import { NotFound } from '../NotFound/NotFound';
 import { getRoute } from '../../utils/routes';
 import { PrivateRoute } from '../../components/PrivateRoute/PrivateRoute';
+import type { Offer as OfferType } from '../../types/offer';
 
 interface AppProps {
-  cardsCount: number;
+  offers: OfferType[];
 }
 
-export const App = ({ cardsCount }: AppProps) => (
+export const App = ({ offers }: AppProps) => (
   <BrowserRouter>
     <Routes>
       <Route
         path={getRoute('/')}
-        element={<Main cardsCount={cardsCount} />}
+        element={<Main offers={offers} />}
       />
       <Route
         path={getRoute('/login')}
