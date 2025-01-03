@@ -1,22 +1,24 @@
-import type { Offer } from '../types/offer';
+import type { City, Offer } from '../types/offer';
+
+export const AMSTERDAM: City = {
+  name: 'Amsterdam',
+  location: {
+    latitude: 52.377956,
+    longitude: 4.897070,
+    zoom: 11,
+  },
+};
 
 export const OFFERS: Offer[] = [
   {
     id: crypto.randomUUID(),
     title: 'Предложение №1',
     type: 'offer',
-    city: {
-      name: 'Новосибирск',
-      location: {
-        latitude: 0,
-        longitude: 0,
-        zoom: 0,
-      },
-    },
+    city: AMSTERDAM,
     location: {
-      latitude: 0,
-      longitude: 0,
-      zoom: 0,
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+      zoom: 11,
     },
     isFavorite: false,
     isPremium: false,
@@ -27,18 +29,11 @@ export const OFFERS: Offer[] = [
     id: crypto.randomUUID(),
     title: 'Предложение №2 Люкс',
     type: 'offer',
-    city: {
-      name: 'Новосибирск',
-      location: {
-        latitude: 0,
-        longitude: 0,
-        zoom: 0,
-      },
-    },
+    city: AMSTERDAM,
     location: {
-      latitude: 0,
-      longitude: 0,
-      zoom: 0,
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
+      zoom: 11,
     },
     isFavorite: false,
     isPremium: false,
@@ -49,18 +44,11 @@ export const OFFERS: Offer[] = [
     id: crypto.randomUUID(),
     title: 'Предложение №3 Ниже среднего',
     type: 'offer',
-    city: {
-      name: 'Новосибирск',
-      location: {
-        latitude: 0,
-        longitude: 0,
-        zoom: 0,
-      },
-    },
+    city: AMSTERDAM,
     location: {
-      latitude: 0,
-      longitude: 0,
-      zoom: 0,
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
+      zoom: 11,
     },
     isFavorite: false,
     isPremium: false,
@@ -71,18 +59,11 @@ export const OFFERS: Offer[] = [
     id: crypto.randomUUID(),
     title: 'Предложение №4',
     type: 'offer',
-    city: {
-      name: 'Новосибирск',
-      location: {
-        latitude: 0,
-        longitude: 0,
-        zoom: 0,
-      },
-    },
+    city: AMSTERDAM,
     location: {
-      latitude: 0,
-      longitude: 0,
-      zoom: 0,
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 11,
     },
     isFavorite: false,
     isPremium: false,

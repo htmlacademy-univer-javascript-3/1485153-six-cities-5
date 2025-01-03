@@ -1,4 +1,6 @@
+import { Map } from '../../components/Map/Map';
 import { OffersList } from '../../components/OffersList/OffersList';
+import { AMSTERDAM } from '../../mocks/offers';
 import type { Offer } from '../../types/offer';
 
 interface MainProps {
@@ -100,7 +102,9 @@ export const Main = ({ offers }: MainProps) => (
             />
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <section className="cities__map map">
+              <Map city={AMSTERDAM} offers={offers} />
+            </section>
           </div>
         </div>
       </div>
