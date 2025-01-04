@@ -98,6 +98,7 @@ export const Main = ({ offers }: MainProps) => (
             </form>
             <OffersList
               offers={offers}
+              nearby={false}
               // activeOffer={null}
             />
           </section>
