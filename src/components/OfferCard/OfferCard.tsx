@@ -4,10 +4,11 @@ import { getOfferRoute } from '../../utils/routes';
 
 interface OfferCardProps {
   offer: Offer;
+  nearby: boolean;
 }
 
-export const OfferCard = ({ offer }: OfferCardProps) => (
-  <article className="cities__card place-card">
+export const OfferCard = ({ offer, nearby }: OfferCardProps) => (
+  <article className={nearby ? 'near-places__card place-card' : 'cities__card place-card'}>
     <div className="place-card__mark">
       <span>Premium</span>
     </div>

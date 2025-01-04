@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const ReviewForm = () => {
+export const CommentForm = () => {
   const [, setRating] = useState(0);
   const [review, setReview] = useState('');
 
