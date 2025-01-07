@@ -20,6 +20,7 @@ export interface Offer {
   id: string;
   title: string;
   type: string; // TODO: типизировать?
+  price: number;
   city: City;
   location: Location;
   isFavorite: boolean;
