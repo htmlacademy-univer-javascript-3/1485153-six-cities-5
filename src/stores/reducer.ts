@@ -11,9 +11,9 @@ const initialState: SixCitiesState = {
 export const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(selectCityAction, (state, action) => {
-      state.selectedCity = action.payload;
+      state.selectedCity = action.payload.city;
     })
     .addCase(saveOffersAction, (state, action) => {
-      state.offers = action.payload;
+      state.offers = action.payload.offers;
     });
 });
