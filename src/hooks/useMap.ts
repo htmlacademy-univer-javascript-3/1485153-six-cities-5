@@ -1,4 +1,4 @@
-import { Map, TileLayer } from 'leaflet';
+import { Map, TileLayer, type LatLngExpression } from 'leaflet';
 import type { City } from '../types/offer';
 import { type RefObject, useEffect, useRef } from 'react';
 
@@ -36,10 +36,15 @@ export function useMap({
       );
       mapRef.current.addLayer(layer);
     } else {
-      mapRef.current.setView({
+      const potentialCenter: LatLngExpression = {
         lat: city.location.latitude,
         lng: city.location.longitude,
-      }, city.location.zoom);
+      };
+      const center = mapRef.current.getCenter();
+
+      if (!center.equals(potentialCenter)) {
+        mapRef.current.setView(potentialCenter, city.location.zoom);
+      }
     }
   }, [containerRef, city]);
 
