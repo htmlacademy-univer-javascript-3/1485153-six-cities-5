@@ -1,11 +1,11 @@
 import classNames from 'classnames';
-import { CityName } from '../../types/offer';
+import { City } from '../../types/offer';
 import { useAppDispatch } from '../../hooks/redux';
 import { selectCityAction } from '../../stores/actions';
 
 interface CitiesListProps {
-  cities: CityName[];
-  selectedCity: CityName;
+  cities: City[];
+  selectedCity: City | null;
 }
 
 export const CitiesList = ({
@@ -17,13 +17,13 @@ export const CitiesList = ({
   return (
     <ul className="locations__list tabs__list">
       {cities.map((city) => (
-        <li className="locations__item" key={city}>
+        <li className="locations__item" key={city.name}>
           <a
-            className={classNames('locations__item-link', 'tabs__item', selectedCity === city ? 'tabs__item--active' : undefined)}
+            className={classNames('locations__item-link', 'tabs__item', selectedCity?.name === city.name ? 'tabs__item--active' : undefined)}
             href="#"
             onClick={() => dispatch(selectCityAction(city))}
           >
-            <span>{city}</span>
+            <span>{city.name}</span>
           </a>
         </li>
       ))}

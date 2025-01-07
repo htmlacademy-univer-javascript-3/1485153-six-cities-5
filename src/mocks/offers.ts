@@ -1,13 +1,5 @@
-import type { City, Offer } from '../types/offer';
-
-export const AMSTERDAM: City = {
-  name: 'Amsterdam',
-  location: {
-    latitude: 52.377956,
-    longitude: 4.897070,
-    zoom: 11,
-  },
-};
+import type { Offer } from '../types/offer';
+import { AMSTERDAM, BRUSSELS, PARIS } from './cities';
 
 export const OFFERS: Offer[] = [
   {
@@ -29,7 +21,7 @@ export const OFFERS: Offer[] = [
     id: crypto.randomUUID(),
     title: 'Предложение №2 Люкс',
     type: 'offer',
-    city: AMSTERDAM,
+    city: PARIS,
     location: {
       latitude: 52.3609553943508,
       longitude: 4.85309666406198,
@@ -44,7 +36,7 @@ export const OFFERS: Offer[] = [
     id: crypto.randomUUID(),
     title: 'Предложение №3 Ниже среднего',
     type: 'offer',
-    city: AMSTERDAM,
+    city: BRUSSELS,
     location: {
       latitude: 52.3909553943508,
       longitude: 4.929309666406198,

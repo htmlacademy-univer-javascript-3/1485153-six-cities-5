@@ -1,6 +1,6 @@
-import type { CityName, Offer } from './offer';
+import type { City, Offer } from './offer';
 
 export interface SixCitiesState {
-  selectedCity: CityName;
+  selectedCity: City | null;
   offers: Offer[];
 }

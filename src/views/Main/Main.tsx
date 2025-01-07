@@ -2,15 +2,13 @@ import { CitiesList } from '../../components/CitiesList/CitiesList';
 import { Map } from '../../components/Map/Map';
 import { OffersList } from '../../components/OffersList/OffersList';
 import { useAppSelector } from '../../hooks/redux';
-import { AMSTERDAM } from '../../mocks/offers';
-import type { CityName, Offer } from '../../types/offer';
+import { CITIES } from '../../mocks/cities';
+import type { Offer } from '../../types/offer';
 import { filterOffers } from '../../utils/offers';
 
 interface MainProps {
   offers: Offer[];
 }
-
-const CITIES: CityName[] = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
 export const Main = ({ offers }: MainProps) => {
   const selectedCity = useAppSelector((state) => state.selectedCity);
@@ -61,7 +59,7 @@ export const Main = ({ offers }: MainProps) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{filteredOffers.length} places to stay in {selectedCity}</b>
+              <b className="places__found">{filteredOffers.length} places to stay in {selectedCity?.name}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -85,7 +83,7 @@ export const Main = ({ offers }: MainProps) => {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map city={AMSTERDAM} offers={filteredOffers} />
+                {selectedCity && <Map city={selectedCity} offers={filteredOffers} />}
               </section>
             </div>
           </div>

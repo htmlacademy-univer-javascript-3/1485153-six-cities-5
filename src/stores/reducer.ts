@@ -1,17 +1,19 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { saveOffersAction, selectCityAction } from './actions';
 import type { SixCitiesState } from '../types/state';
+import { PARIS } from '../mocks/cities';
 
 const initialState: SixCitiesState = {
-  selectedCity: 'Paris',
+  selectedCity: PARIS, // TODO: null
   offers: [],
 };
 
 export const reducer = createReducer(initialState, (builder) => {
-  builder.addCase(selectCityAction, (state, action) => {
-    state.selectedCity = action.payload;
-  });
-  builder.addCase(saveOffersAction, (state, action) => {
-    state.offers = action.payload;
-  });
+  builder
+    .addCase(selectCityAction, (state, action) => {
+      state.selectedCity = action.payload;
+    })
+    .addCase(saveOffersAction, (state, action) => {
+      state.offers = action.payload;
+    });
 });
