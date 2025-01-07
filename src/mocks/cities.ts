@@ -1,13 +1,13 @@
 import type { City } from '../types/offer';
 
-const DEFAILT_ZOOM = 11;
+const DEFAULT_ZOOM = 11;
 
 export const AMSTERDAM: City = {
   name: 'Amsterdam',
   location: {
     latitude: 52.377956,
     longitude: 4.897070,
-    zoom: DEFAILT_ZOOM,
+    zoom: DEFAULT_ZOOM,
   },
 };
 
@@ -16,7 +16,7 @@ export const PARIS: City = {
   location: {
     latitude: 48.864716,
     longitude: 2.349014,
-    zoom: DEFAILT_ZOOM,
+    zoom: DEFAULT_ZOOM,
   },
 };
 
@@ -25,7 +25,7 @@ export const BRUSSELS: City = {
   location: {
     latitude: 50.85045,
     longitude: 4.34878,
-    zoom: DEFAILT_ZOOM,
+    zoom: DEFAULT_ZOOM,
   },
 };
 
@@ -36,7 +36,7 @@ export const CITIES: City[] = [
     location: {
       latitude: 50.935173,
       longitude: 6.953101,
-      zoom: DEFAILT_ZOOM,
+      zoom: DEFAULT_ZOOM,
     },
   },
   BRUSSELS,
@@ -46,7 +46,7 @@ export const CITIES: City[] = [
     location: {
       latitude: 53.551086,
       longitude: 9.993682,
-      zoom: DEFAILT_ZOOM,
+      zoom: DEFAULT_ZOOM,
     },
   },
   {
@@ -54,7 +54,7 @@ export const CITIES: City[] = [
     location: {
       latitude: 51.233334,
       longitude: 6.783333,
-      zoom: DEFAILT_ZOOM,
+      zoom: DEFAULT_ZOOM,
     },
   },
 ];
