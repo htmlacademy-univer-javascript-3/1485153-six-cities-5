@@ -4,8 +4,15 @@ export interface Location {
   zoom: number;
 }
 
+export type CityName = 'Paris'
+  | 'Cologne'
+  | 'Brussels'
+  | 'Amsterdam'
+  | 'Hamburg'
+  | 'Dusseldorf';
+
 export interface City {
-  name: string;
+  name: CityName;
   location: Location;
 }
 

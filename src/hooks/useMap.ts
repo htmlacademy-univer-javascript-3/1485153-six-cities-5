@@ -1,6 +1,6 @@
-import { Map, TileLayer } from 'leaflet';
+import { Map, TileLayer, type LatLngExpression } from 'leaflet';
 import type { City } from '../types/offer';
-import { type RefObject, useEffect, useRef, useState } from 'react';
+import { type RefObject, useEffect, useRef } from 'react';
 
 interface UseMapParameters {
   containerRef: RefObject<HTMLDivElement | null>;
@@ -11,12 +11,15 @@ export function useMap({
   containerRef,
   city,
 }: UseMapParameters): Map | null {
-  const [map, setMap] = useState<Map | null>(null);
-  const isCreatedRef = useRef(false);
+  const mapRef = useRef<Map | null>(null);
 
   useEffect(() => {
-    if (containerRef.current && !isCreatedRef.current) {
-      const newMap = new Map(containerRef.current, {
+    if (!containerRef.current) {
+      return;
+    }
+
+    if (!mapRef.current) {
+      mapRef.current = new Map(containerRef.current, {
         center: {
           lat: city.location.latitude,
           lng: city.location.longitude,
@@ -31,11 +34,19 @@ export function useMap({
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         }
       );
-      newMap.addLayer(layer);
-      setMap(newMap);
-      isCreatedRef.current = true;
+      mapRef.current.addLayer(layer);
+    } else {
+      const potentialCenter: LatLngExpression = {
+        lat: city.location.latitude,
+        lng: city.location.longitude,
+      };
+      const center = mapRef.current.getCenter();
+
+      if (!center.equals(potentialCenter)) {
+        mapRef.current.setView(potentialCenter, city.location.zoom);
+      }
     }
   }, [containerRef, city]);
 
-  return map;
+  return mapRef.current;
 }
