@@ -1,5 +1,5 @@
 import type { Offer } from '../types/offer';
-import { AMSTERDAM, BRUSSELS, PARIS } from './cities';
+import { AMSTERDAM } from './cities';
 
 export const OFFERS: Offer[] = [
   {
@@ -7,6 +7,7 @@ export const OFFERS: Offer[] = [
     title: 'Предложение №1',
     type: 'offer',
     city: AMSTERDAM,
+    price: 999,
     location: {
       latitude: 52.3909553943508,
       longitude: 4.85309666406198,
@@ -14,14 +15,15 @@ export const OFFERS: Offer[] = [
     },
     isFavorite: false,
     isPremium: false,
-    rating: 0,
+    rating: 2,
     previewImage: '',
   },
   {
     id: crypto.randomUUID(),
     title: 'Предложение №2 Люкс',
     type: 'offer',
-    city: PARIS,
+    price: 888,
+    city: AMSTERDAM,
     location: {
       latitude: 52.3609553943508,
       longitude: 4.85309666406198,
@@ -29,14 +31,15 @@ export const OFFERS: Offer[] = [
     },
     isFavorite: false,
     isPremium: false,
-    rating: 0,
+    rating: 3,
     previewImage: '',
   },
   {
     id: crypto.randomUUID(),
     title: 'Предложение №3 Ниже среднего',
     type: 'offer',
-    city: BRUSSELS,
+    price: 777,
+    city: AMSTERDAM,
     location: {
       latitude: 52.3909553943508,
       longitude: 4.929309666406198,
@@ -44,13 +47,14 @@ export const OFFERS: Offer[] = [
     },
     isFavorite: false,
     isPremium: false,
-    rating: 0,
+    rating: 1,
     previewImage: '',
   },
   {
     id: crypto.randomUUID(),
     title: 'Предложение №4',
     type: 'offer',
+    price: 666,
     city: AMSTERDAM,
     location: {
       latitude: 52.3809553943508,
@@ -59,7 +63,7 @@ export const OFFERS: Offer[] = [
     },
     isFavorite: false,
     isPremium: false,
-    rating: 0,
+    rating: 5,
     previewImage: '',
   },
 ];
