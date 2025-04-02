@@ -1,10 +1,11 @@
 import { CitiesList } from '../../components/CitiesList/CitiesList';
 import { Map } from '../../components/Map/Map';
 import { OffersList } from '../../components/OffersList/OffersList';
+import { SortOffersOptions } from '../../components/SortOffersOptions/SortOffersOptions';
 import { useAppSelector } from '../../hooks/redux';
 import { CITIES } from '../../mocks/cities';
 import type { Offer } from '../../types/offer';
-import { filterOffers } from '../../utils/offers';
+import { filterOffers, sortOffers } from '../../utils/offers';
 
 interface MainProps {
   offers: Offer[];
@@ -12,7 +13,10 @@ interface MainProps {
 
 export const Main = ({ offers }: MainProps) => {
   const selectedCity = useAppSelector((state) => state.selectedCity);
-  const filteredOffers = filterOffers(offers, selectedCity);
+  const sortType = useAppSelector((state) => state.offersSortType);
+  const highlightedOffer = useAppSelector((state) => state.highlightedOffer);
+
+  const filteredOffers = filterOffers(offers, selectedCity).sort((a, b) => sortOffers(a, b, sortType));
 
   return (
     <div className="page page--gray page--main">
@@ -60,21 +64,7 @@ export const Main = ({ offers }: MainProps) => {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{filteredOffers.length} places to stay in {selectedCity?.name}</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlinkHref="#icon-arrow-select"></use>
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-                  <li className="places__option" tabIndex={0}>Price: low to high</li>
-                  <li className="places__option" tabIndex={0}>Price: high to low</li>
-                  <li className="places__option" tabIndex={0}>Top rated first</li>
-                </ul>
-              </form>
+              <SortOffersOptions />
               <OffersList
                 offers={filteredOffers}
                 nearby={false}
@@ -83,7 +73,13 @@ export const Main = ({ offers }: MainProps) => {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                {selectedCity && <Map city={selectedCity} offers={filteredOffers} />}
+                {selectedCity && (
+                  <Map
+                    city={selectedCity}
+                    offers={filteredOffers}
+                    highlightedOffer={highlightedOffer}
+                  />
+                )}
               </section>
             </div>
           </div>

@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 interface MapProps {
   city: City;
   offers: Offer[];
+  highlightedOffer: Offer | null;
 }
 
 const DEFAULT_ICON = new Icon({
@@ -14,15 +15,15 @@ const DEFAULT_ICON = new Icon({
   iconSize: [27, 39],
 });
 
-// const SELECTED_ICON = new Icon({
-//   iconUrl: 'pin-active.svg',
-//   iconSize: [27, 39],
-// });
+const ACTIVE_ICON = new Icon({
+  iconUrl: 'img/pin-active.svg',
+  iconSize: [27, 39],
+});
 
 export const Map = ({
   city,
   offers,
-  // selectedLocation,
+  highlightedOffer,
 }: MapProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const map = useMap({ containerRef, city });
@@ -37,7 +38,7 @@ export const Map = ({
       const marker = new Marker({
         lat: offer.location.latitude,
         lng: offer.location.longitude,
-      }, { icon: DEFAULT_ICON });
+      }, { icon: offer.id === highlightedOffer?.id ? ACTIVE_ICON : DEFAULT_ICON });
 
       marker.addTo(map);
       markers.add(marker);
@@ -49,7 +50,7 @@ export const Map = ({
       });
       markers.clear();
     };
-  }, [map, city, offers]);
+  }, [map, offers, highlightedOffer]);
 
   return (
     <div

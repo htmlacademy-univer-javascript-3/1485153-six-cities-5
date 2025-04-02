@@ -8,6 +8,7 @@ import { UserCommentList } from '../../UserCommentList/UserCommentList';
 
 export const Offer = () => {
   const selectedCity = useAppSelector((state) => state.selectedCity);
+  const highlightedOffer = useAppSelector((state) => state.highlightedOffer);
 
   return (
     <div className="page">
@@ -167,7 +168,13 @@ export const Offer = () => {
             </div>
           </div>
           <section className="offer__map map">
-            {selectedCity && <Map city={selectedCity} offers={OFFERS} />}
+            {selectedCity && (
+              <Map
+                city={selectedCity}
+                offers={OFFERS}
+                highlightedOffer={highlightedOffer}
+              />
+            )}
           </section>
         </section>
         <div className="container">
